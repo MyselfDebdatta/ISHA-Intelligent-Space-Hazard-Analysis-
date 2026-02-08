@@ -9,7 +9,7 @@ if (!token) {
 /*********************************
  * CONFIG & GLOBAL STATE
  *********************************/
-const API_URL = "http://localhost:5000";
+const API_URL = "https://isha-intelligent-space-hazard-analysis-1cl2.onrender.com";
 
 let currentView = "watchlist"; // "watchlist" | "all"
 let allAsteroids = [];
@@ -65,7 +65,7 @@ function setupEventListeners() {
     }
   });
 
-    // 3D View
+  // 3D View
   document.getElementById("view-3d-btn")?.addEventListener("click", () => {
     if (typeof window.open3D === "function") {
       window.open3D(allAsteroids);
