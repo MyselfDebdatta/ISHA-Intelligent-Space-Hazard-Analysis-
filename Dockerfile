@@ -2,15 +2,16 @@ FROM node:18-bullseye
 
 WORKDIR /app
 
-# Install backend
+# Backend install
 COPY backend/package*.json ./backend/
 RUN cd backend && npm install
 COPY backend ./backend
 
-# Install nginx for frontend
+# Frontend static serve
 RUN apt-get update && apt-get install -y nginx
 COPY frontend /usr/share/nginx/html
 
-EXPOSE 80
+EXPOSE 8080
 
 CMD nginx && node backend/server.js
+
