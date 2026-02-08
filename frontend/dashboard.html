@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA Asteroid Risk Analysis Dashboard</title>
+    <meta name="description" content="Real-time NASA asteroid tracking and risk analysis system">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+  <div class="logo">
+    <div class="logo-icon">🌍</div>
+    <div class="logo-text">
+      <h1>NASA Asteroid Tracker</h1>
+      <p>Real-Time Risk Analysis System</p>
+    </div>
+  </div>
+
+  <!-- RIGHT ACTIONS -->
+  <div class="header-actions">
+    <button id="refreshBtn" class="refresh-btn">
+      ↻ Refresh Data
+    </button>
+
+    <div class="user-menu">
+      <div class="user-avatar" id="userAvatar">👤</div>
+      <div class="logout-dropdown" id="logoutDropdown">
+        <button id="logoutBtn">🚪 Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </header>
+
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card stat-card-total">
+                <div class="stat-icon">🌌</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="totalCount">--</div>
+                    <div class="stat-label">Total Asteroids</div>
+                </div>
+            </div>
+            <div class="stat-card stat-card-high">
+                <div class="stat-icon">🔴</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="highRiskCount">--</div>
+                    <div class="stat-label">High Risk</div>
+                </div>
+            </div>
+            <div class="stat-card stat-card-medium">
+                <div class="stat-icon">🟡</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="mediumRiskCount">--</div>
+                    <div class="stat-label">Medium Risk</div>
+                </div>
+            </div>
+            <div class="stat-card stat-card-low">
+                <div class="stat-icon">🟢</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="lowRiskCount">--</div>
+                    <div class="stat-label">Low Risk</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="filters">
+    <button class="filter-btn active" id="watchlistViewBtn">
+        ⭐ My Watchlist
+    </button>
+
+    <button class="filter-btn" id="viewAllBtn">
+        🌌 View All Asteroids
+    </button>
+    <button class="filter-btn" id="view-3d-btn">
+        🌍 3D View
+    </button>
+</div>
+
+<div id="solar-system-container" class="solar-system-container" style="display: none;">
+            <div class="loading-3d">Initializing 3D Space...</div>
+            <button id="close-3d-btn" class="close-3d-btn">Exit 3D View</button>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <p>Fetching asteroid data from NASA...</p>
+        </div>
+
+        <div class="error" id="error" style="display: none;">
+            <div class="error-icon">⚠️</div>
+            <h3>Failed to Load Data</h3>
+            <p id="errorMessage"></p>
+            <button onclick="loadAsteroidData()" class="retry-btn">Retry</button>
+        </div>
+
+        <div class="asteroids-container" id="asteroidsContainer">
+            <!-- Asteroid cards will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Chat Interface -->
+    <div id="chat-container" class="chat-container">
+        <button id="chat-toggle-btn" class="chat-toggle-btn" style="background-color: #6319aeaa;">
+            <span class="chat-icon">💬</span>
+            <span class="chat-text">Space Chat</span>
+        </button>
+
+        <div id="chat-window" class="chat-window" style="display: none;">
+            <div class="chat-header">
+                <h3>Global Space Comms</h3>
+                <button id="chat-close-btn" class="chat-close-btn">×</button>
+            </div>
+            <div id="chat-messages" class="chat-messages">
+                <!-- Messages will appear here -->
+                <div class="message system">🌍 Welcome to Global Space Comms…</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Transmission..." maxlength="100">
+                <button id="chat-send-btn">🚀</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/solarSystem.js"></script>
+</body>
+</html>
