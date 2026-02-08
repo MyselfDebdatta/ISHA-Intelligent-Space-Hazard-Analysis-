@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: isha-backend
+    env: node
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: PORT
+        value: 10000
+    autoDeploy: false
