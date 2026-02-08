@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const API = "http://localhost:5000/api/auth";
+  const API = "https://isha-intelligent-space-hazard-analysis-1cl2.onrender.com/api/auth";
 
   /* ========== REGISTER ========== */
   const registerForm = document.getElementById("registerForm");

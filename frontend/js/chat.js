@@ -3,7 +3,7 @@
  */
 
 // Connect to Socket.io server
-const socket = io('http://localhost:5000');
+const socket = io('https://isha-intelligent-space-hazard-analysis-1cl2.onrender.com');
 
 // DOM Elements
 const chatContainer = document.getElementById('chat-container');
